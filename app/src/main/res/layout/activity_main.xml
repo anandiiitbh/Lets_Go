@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/gradient_background"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/main_layout1"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:backgroundTint="#090909"
+        android:layout_height="330dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="@string/lets_start"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="@string/enter_number"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center|top"
+            >
+            <EditText
+                android:id="@+id/editTextPhone2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:backgroundTint="#000000"
+                android:cursorVisible="false"
+                android:clickable="false"
+                android:focusable="false"
+                android:ems="2"
+                android:text="@string/starting_number"
+                android:includeFontPadding="true"
+                android:inputType="phone"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#000000"
+                android:layout_marginLeft="0dp"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:ems="7"
+                android:selectAllOnFocus="true"
+                android:hint="@string/phone_number_placeholder"
+                android:includeFontPadding="true"
+                android:inputType="phone"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:background="#2a2e3a"
+            android:src="@drawable/letsgo" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

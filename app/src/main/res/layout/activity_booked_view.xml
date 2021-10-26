@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:paddingTop="60dp"
+    android:layout_height="match_parent"
+    tools:context=".BookedView">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/rideInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="111dp">
+
+            <ImageView
+                android:id="@+id/type"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="20dp"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="53dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/driver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/driverCab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/driverPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/rideInfo"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <TextView
+        android:id="@+id/src"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/from_marker"
+        android:drawablePadding="3dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="none"
+        android:padding="5dp"
+        android:singleLine="true"
+        app:layout_constraintTop_toBottomOf="@+id/price"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <TextView
+        android:id="@+id/dest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/to_marker"
+        android:drawablePadding="2dp"
+        android:singleLine="true"
+        android:ems="10"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:scrollHorizontally="true"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@+id/src"
+        android:padding="5dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <TextView
+        android:id="@+id/enjoyRide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:drawablePadding="2dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="none"
+        android:padding="5dp"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/enjoy_ride"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintTop_toBottomOf="@+id/dest"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="shareWithFamily"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/wa_logo"
+        android:padding="15dp"
+        android:text="Share your ride "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enjoyRide" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="callDriver"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:text="Call Driver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="gotoPastBookings"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:text="All Bookings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/cancelRide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:onClick="cancelRide"
+        android:padding="15dp"
+        android:text="Cancel Ride"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

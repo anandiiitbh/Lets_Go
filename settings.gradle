@@ -1,0 +1,2 @@
+rootProject.name = "MobileOTPAuth"
+include ':app'

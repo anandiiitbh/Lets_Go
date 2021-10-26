@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/from_marker"
+        android:drawablePadding="3dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="none"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/map"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/to_marker"
+        android:drawablePadding="2dp"
+        android:singleLine="true"
+        android:ems="10"
+        android:gravity="center"
+        android:scrollHorizontally="true"
+        android:inputType="none"
+        android:padding="5dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/from"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="none"
+        tools:layout_editor_absoluteX="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/to"
+        tools:layout_editor_absoluteY="139dp" />
+
+    <GridView
+        android:id="@+id/idGVcourses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:horizontalSpacing="6dp"
+        android:padding="6dp"
+        android:numColumns="2"
+        android:verticalSpacing="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance" />
+
+
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idGVcourses" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/paymentFooter"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="-8dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="#D1D0D0"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/selectMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="Select payment method"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/cashButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/cash"
+                    app:backgroundTint="@color/splash"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:fabSize="normal"
+                    android:tooltipText="Cash Payment"
+                    app:layout_constraintBottom_toTopOf="@+id/footer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:pressedTranslationZ="12dp"
+                    tools:ignore="MissingConstraints" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:text="Cash"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/walletButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_account_balance_wallet_24"
+                app:backgroundTint="@color/splash"
+                app:borderWidth="0dp"
+                android:tooltipText="Wallet Payment"
+                app:elevation="6dp"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toTopOf="@+id/footer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:pressedTranslationZ="12dp"
+                tools:ignore="MissingConstraints" />
+
+
+                <TextView
+                    android:id="@+id/walletText"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:text="Wallet"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/onlineButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/card"
+                app:backgroundTint="@color/splash"
+                android:tooltipText="Card/UPI/Netbanking"
+                app:borderWidth="0dp"
+                app:elevation="6dp"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toTopOf="@+id/footer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:pressedTranslationZ="12dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="false"
+                android:text="Online Payment" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

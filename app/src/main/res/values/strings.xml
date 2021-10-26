@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">MobileOTPAuth</string>
+    <string name="lets_start">Let\'s Start</string>
+    <string name="enter_number">Enter your Phone Number</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phone_number_placeholder"> XXX XXX XXXX</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="zero">0</string>
+    <string name="starting_number">+91</string>
+    <string name="otp_Sent_msg">OTP sent to  </string>
+    <string name="changeNumber">Change Number ? 🤔</string>
+    <string name="resendOtp">I didn\'t receive OTP </string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="google_maps_key">AIzaSyDffOUNE4WP7K16Se3OY1hhT2Xdu7dE05I</string>
+    <string name="Select_pickup">Select pickup point</string>
+    <string name="Nearby_currentLoc">Nearby current location ?</string>
+    <string name="Enter_Source">Enter PickUp</string>
+    <string name="title_activity_dest_map">DestMapActivity</string>
+    <string name="Select_dest">Select Drop</string>
+    <string name="Enter_Dest">Enter Drop</string>
+    <string name="enjoy_ride">Enjoy Your Ride 🤗</string>
+    <string name="loading_title">Fetching past rides</string>
+    <string name="loading_message">Loading your Past rides</string>
+    <string name="lets_go">Let\'s Go</string>
+    <string name="logout">Logout</string>
+    <string name="app_label">Let\'s Go</string>
+    <string name="search_hint">Search Place</string>
+    <string name="mapTheme">[   {     \"featureType\": \"landscape\",     \"stylers\": [       {         \"color\": \"#ada9a9\"       }     ]   },   {     \"featureType\": \"landscape\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"color\": \"#d6d6d6\"       }     ]   },   {     \"featureType\": \"landscape.man_made\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"color\": \"#e5dcdc\"       }     ]   },   {     \"featureType\": \"landscape.man_made\",     \"elementType\": \"geometry.stroke\",     \"stylers\": [       {         \"color\": \"#d6d6d6\"       },       {         \"visibility\": \"off\"       }     ]   },   {     \"featureType\": \"poi\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"weight\": 4.5       }     ]   },   {     \"featureType\": \"poi.business\",     \"stylers\": [       {         \"visibility\": \"off\"       }     ]   },   {     \"featureType\": \"poi.park\",     \"elementType\": \"labels.text\",     \"stylers\": [       {         \"visibility\": \"off\"       }     ]   },   {     \"featureType\": \"road.arterial\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"color\": \"#fcfcfc\"       }     ]   },   {     \"featureType\": \"road.highway\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"color\": \"#c4c4c4\"       },       {         \"weight\": 2.5       }     ]   },   {     \"featureType\": \"road.highway.controlled_access\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"color\": \"#c2c2c2\"       }     ]   },   {     \"featureType\": \"road.local\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"color\": \"#ffffff\"       }     ]   },   {     \"featureType\": \"transit.line\",     \"elementType\": \"geometry.fill\",     \"stylers\": [       {         \"color\": \"#ada9a9\"       }     ]   } ]</string>
+
+</resources>
