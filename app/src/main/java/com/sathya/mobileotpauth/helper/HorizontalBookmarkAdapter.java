@@ -1,5 +1,6 @@
 package com.sathya.mobileotpauth.helper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sathya.mobileotpauth.R;
@@ -33,16 +35,16 @@ public class HorizontalBookmarkAdapter extends RecyclerView.Adapter<HorizontalBo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
         View view;
-        LinearLayout layout;
+        CardView layout;
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
             this.view = view;
             textView = (TextView) view.findViewById(R.id.bookmarkName);
-            layout = view.findViewById(R.id.bookmarkContainer);
+            layout = view.findViewById(R.id.imageView6);
         }
 
-        public LinearLayout getContainer(){return layout;}
+        public CardView getContainer(){return layout;}
         public TextView getTextView() {
             return textView;
         }
@@ -69,12 +71,12 @@ public class HorizontalBookmarkAdapter extends RecyclerView.Adapter<HorizontalBo
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         viewHolder.getTextView().setText(items.get(position).getName());
         Random rnd = new Random();
-        int currentColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        int currentColor = Color.argb(100, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
 
-//        viewHolder.getContainer().setBackgroundColor(currentColor);
+        viewHolder.getContainer().setCardBackgroundColor(currentColor);
         viewHolder.getView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
