@@ -1,4 +1,4 @@
-package com.sathya.mobileotpauth.helper;
+package com.sathya.mobileotpauth.helper.models;
 
 public class RideModel {
 

@@ -1,4 +1,4 @@
-package com.sathya.mobileotpauth.helper;
+package com.sathya.mobileotpauth.helper.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.sathya.mobileotpauth.MapsActivity;
 import com.sathya.mobileotpauth.R;
 import com.sathya.mobileotpauth.helper.KeyboardFragment;
-import com.sathya.mobileotpauth.helper.RideModel;
+import com.sathya.mobileotpauth.helper.models.RideModel;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -3,7 +3,6 @@ package com.sathya.mobileotpauth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.SearchManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,16 +31,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Adapter;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,11 +60,9 @@ import com.razorpay.Checkout;
 import com.sathya.mobileotpauth.databinding.ActivitySourceMapBinding;
 import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
 import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
-import com.sathya.mobileotpauth.helper.BookmarkAdapter;
-import com.sathya.mobileotpauth.helper.BookmarkModel;
-import com.sathya.mobileotpauth.helper.Constants;
-import com.sathya.mobileotpauth.helper.HorizontalBookmarkAdapter;
-import com.sathya.mobileotpauth.helper.SearchableAdapter;
+import com.sathya.mobileotpauth.helper.models.BookmarkModel;
+import com.sathya.mobileotpauth.helper.adapters.HorizontalBookmarkAdapter;
+import com.sathya.mobileotpauth.helper.adapters.SearchableAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -93,6 +87,11 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
     View locationButton;
     HorizontalBookmarkAdapter adapter;
     RecyclerView horizontal_recycler_view;
+
+//    menuButton Menu
+    FloatingActionButton menuButton, pastRideButton, walletButton, customerSupportButton;
+    Animation menuButtonOpen, menuButtonClose, rotateForward, rotateBackward;
+    boolean isOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,6 +209,101 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
         };
 
 
+//        menuButton Menu buttons
+        menuButton = (FloatingActionButton) findViewById(R.id.fabMenu);
+        pastRideButton = (FloatingActionButton) findViewById(R.id.gotoPastRides);
+        walletButton = (FloatingActionButton) findViewById(R.id.fabWallet);
+        customerSupportButton = (FloatingActionButton) findViewById(R.id.fabCustomerSupport);
+
+        menuButtonOpen = AnimationUtils.loadAnimation
+                (this,R.anim.fab_open);
+        menuButtonClose = AnimationUtils.loadAnimation
+                (this,R.anim.fab_close);
+        rotateForward = AnimationUtils.loadAnimation
+                (this,R.anim.rotate_forward);
+        rotateBackward = AnimationUtils.loadAnimation
+                (this,R.anim.rotate_backward);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateMenuButton();
+            }
+        });
+        pastRideButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoPastBookings();
+            }
+        });
+        walletButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoWalletRecharge();
+            }
+        });
+        customerSupportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoCustomerSupport();
+            }
+        });
+
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                animateMenuButton();
+            }
+        }, 2000);
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                animateMenuButton();
+            }
+        }, 3000);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(isOpen)
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    animateMenuButton();
+                }
+            }, 1000);
+    }
+
+    private void animateMenuButton(){
+        if (isOpen){
+            menuButton.startAnimation(rotateForward);
+            menuButton.setImageDrawable(getDrawable(R.drawable.ic_round_menu_24));
+            pastRideButton.startAnimation(menuButtonClose);
+            walletButton.startAnimation(menuButtonClose);
+            customerSupportButton.startAnimation(menuButtonClose);
+            pastRideButton.setClickable(false);
+            walletButton.setClickable(false);
+            customerSupportButton.setClickable(false);
+            isOpen=false;
+        }else {
+            menuButton.startAnimation(rotateBackward);
+            menuButton.setImageDrawable(getDrawable(R.drawable.ic_round_close_24));
+            pastRideButton.startAnimation(menuButtonOpen);
+            walletButton.startAnimation(menuButtonOpen);
+            customerSupportButton.startAnimation(menuButtonOpen);
+            pastRideButton.setClickable(true);
+            walletButton.setClickable(true);
+            customerSupportButton.setClickable(true);
+            isOpen=true;
+        }
     }
 
 
@@ -253,7 +347,7 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
                 != PackageManager.PERMISSION_GRANTED);
         gotoMyCurrentLocation();
 
-        userLocationFAB();
+        userLocationmenuButton();
         recentRideEnable();
         showBookMarks();
 
@@ -494,8 +588,18 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
         }
     }
 
-    public void gotoPastBookings(View view) {
+    public void gotoPastBookings() {
         Intent intent = new Intent(this, PastRideViews.class);
+        startActivity(intent);
+    }
+
+    public void gotoWalletRecharge() {
+        Intent intent = new Intent(this, AddMoneyToWallet.class);
+        startActivity(intent);
+    }
+
+    public void gotoCustomerSupport() {
+        Intent intent = new Intent(this, CustomerSupport.class);
         startActivity(intent);
     }
 
@@ -645,9 +749,9 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
         editText.setText(getAreaName());
     }
 
-    private void userLocationFAB(){
-        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.myLocationButton);
-        FAB.setOnClickListener(new View.OnClickListener() {
+    private void userLocationmenuButton(){
+        FloatingActionButton menuButton = (FloatingActionButton) findViewById(R.id.myLocationButton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 locationButton.callOnClick();

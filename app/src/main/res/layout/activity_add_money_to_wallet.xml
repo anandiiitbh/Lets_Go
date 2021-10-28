@@ -8,12 +8,12 @@
 
     <EditText
         android:id="@+id/moneyField"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="102dp"
-        android:layout_marginEnd="96dp"
-        android:paddingLeft="20dp"
+        android:layout_marginEnd="70dp"
+        android:drawableLeft="@drawable/rupee"
         android:ems="10"
         android:hint="1000"
         android:inputType="number"

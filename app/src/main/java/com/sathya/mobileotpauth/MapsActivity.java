@@ -1,11 +1,9 @@
 package com.sathya.mobileotpauth;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,8 +15,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,10 +35,9 @@ import org.json.JSONObject;
 
 import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
 import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
-import com.sathya.mobileotpauth.helper.BookmarkModel;
 import com.sathya.mobileotpauth.helper.Constants;
-import com.sathya.mobileotpauth.helper.PriceListGVAdapter;
-import com.sathya.mobileotpauth.helper.RideModel;
+import com.sathya.mobileotpauth.helper.adapters.PriceListGVAdapter;
+import com.sathya.mobileotpauth.helper.models.RideModel;
 
 import org.json.JSONException;
 

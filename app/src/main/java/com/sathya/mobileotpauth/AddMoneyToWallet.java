@@ -10,13 +10,12 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import com.sathya.mobileotpauth.helper.Constants;
-import com.sathya.mobileotpauth.helper.RideModel;
+import com.sathya.mobileotpauth.helper.models.RideModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,8 +66,12 @@ public class AddMoneyToWallet extends AppCompatActivity implements PaymentResult
         addMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int value =0;
+                if(moneyToAdd.getText().toString().length() > 4)
+                    value = Integer.parseInt(moneyToAdd.getText().toString().substring(0,5));
+                else
+                    value = Integer.parseInt(moneyToAdd.getText().toString());
 
-                int value = Integer.parseInt(moneyToAdd.getText().toString());
                 if(value < 100){
                     moneyToAdd.setText("100");
                     Toast.makeText(AddMoneyToWallet.this,"Can't Add less then 100",Toast.LENGTH_LONG).show();

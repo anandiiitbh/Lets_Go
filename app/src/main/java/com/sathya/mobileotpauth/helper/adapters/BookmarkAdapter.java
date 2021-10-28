@@ -1,4 +1,4 @@
-package com.sathya.mobileotpauth.helper;
+package com.sathya.mobileotpauth.helper.adapters;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import com.sathya.mobileotpauth.R;
 import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
 import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
+import com.sathya.mobileotpauth.helper.models.BookmarkModel;
 
 import java.io.IOException;
 import java.util.ArrayList;

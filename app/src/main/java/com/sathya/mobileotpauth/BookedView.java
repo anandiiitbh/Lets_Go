@@ -14,10 +14,7 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +23,9 @@ import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
 import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
 import com.sathya.mobileotpauth.helper.Constants;
 import com.sathya.mobileotpauth.helper.NotificationBuildHelper;
-import com.sathya.mobileotpauth.helper.PastRideListAdapter;
-import com.sathya.mobileotpauth.helper.RideModel;
+import com.sathya.mobileotpauth.helper.models.RideModel;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookedView extends AppCompatActivity {

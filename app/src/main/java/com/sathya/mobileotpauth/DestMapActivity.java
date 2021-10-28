@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -28,7 +27,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Handler;
 import android.provider.BaseColumns;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,7 +35,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -46,10 +43,9 @@ import androidx.core.app.ActivityCompat;
 import com.sathya.mobileotpauth.databinding.ActivityDestMapBinding;
 import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
 import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
-import com.sathya.mobileotpauth.helper.BookmarkAdapter;
-import com.sathya.mobileotpauth.helper.BookmarkModel;
-import com.sathya.mobileotpauth.helper.HorizontalBookmarkAdapter;
-import com.sathya.mobileotpauth.helper.SearchableAdapter;
+import com.sathya.mobileotpauth.helper.adapters.BookmarkAdapter;
+import com.sathya.mobileotpauth.helper.models.BookmarkModel;
+import com.sathya.mobileotpauth.helper.adapters.SearchableAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;

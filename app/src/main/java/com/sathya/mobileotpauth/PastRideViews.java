@@ -2,10 +2,8 @@ package com.sathya.mobileotpauth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,8 +18,8 @@ import android.widget.ProgressBar;
 import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
 import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
 import com.sathya.mobileotpauth.helper.KeyboardFragment;
-import com.sathya.mobileotpauth.helper.PastRideListAdapter;
-import com.sathya.mobileotpauth.helper.RideModel;
+import com.sathya.mobileotpauth.helper.adapters.PastRideListAdapter;
+import com.sathya.mobileotpauth.helper.models.RideModel;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.sathya.mobileotpauth.helper;
+package com.sathya.mobileotpauth.helper.adapters;
 
 import android.location.Address;
 import android.view.LayoutInflater;

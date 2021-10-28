@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileOTPAuth">
         <activity
+            android:name=".CustomerSupport"
+            android:exported="true" />
+        <activity
             android:name=".AddMoneyToWallet"
             android:exported="true" />
         <activity

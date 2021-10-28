@@ -1,12 +1,6 @@
-package com.sathya.mobileotpauth.helper;
+package com.sathya.mobileotpauth.helper.adapters;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.TimeZone;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.sathya.mobileotpauth.BookedView;
 import com.sathya.mobileotpauth.R;
-import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
-import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
-import com.sathya.mobileotpauth.helper.KeyboardFragment;
-import com.sathya.mobileotpauth.helper.RideModel;
+import com.sathya.mobileotpauth.helper.models.RideModel;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
 
 public class PriceListGVAdapter extends ArrayAdapter<RideModel> {
     callback callbackToMapsActivity;
