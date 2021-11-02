@@ -19,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -126,55 +127,204 @@
         app:layout_constraintTop_toBottomOf="@+id/dest"
         tools:layout_editor_absoluteX="8dp" />
 
-    <Button
+    <androidx.cardview.widget.CardView
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_margin="40dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#35C115"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="2dp"
         android:onClick="shareWithFamily"
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@drawable/wa_logo"
-        android:padding="15dp"
-        android:text="Share your ride "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enjoyRide" />
+        app:layout_constraintTop_toBottomOf="@+id/enjoyRide" >
 
-    <Button
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:cardCornerRadius="5dp"
+            app:contentPadding="5dp" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/wa_logo"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:layout_width="2dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="7dp"
+                android:background="#35C115"
+                android:layout_height="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Share your ride "
+                android:textColor="#35C115"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#DC00BCD4"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="2dp"
         android:onClick="callDriver"
-        android:layout_marginTop="30dp"
-        android:padding="15dp"
-        android:text="Call Driver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"  >
 
-    <Button
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:cardCornerRadius="5dp"
+            app:contentPadding="5dp" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_baseline_call_24"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_width="2dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:background="#DC00BCD4"
+                    android:layout_height="30dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Call Driver"
+                    android:textColor="#DC00BCD4"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/button19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#FBC72C"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="2dp"
         android:onClick="gotoPastBookings"
-        android:layout_marginTop="30dp"
-        android:padding="15dp"
-        android:text="All Bookings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/button3"  >
 
-    <Button
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:cardCornerRadius="5dp"
+            app:contentPadding="5dp" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_baseline_history_edu_24"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_width="2dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:background="#FBC72C"
+                    android:layout_height="30dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="All Bookings"
+                    android:textColor="#FBC72C"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/cancelRide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#FF9800"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="2dp"
         android:onClick="cancelRide"
-        android:padding="15dp"
-        android:text="Cancel Ride"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/button19" >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:cardCornerRadius="5dp"
+            app:contentPadding="5dp" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_baseline_cancel_schedule_send_24"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_width="2dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:background="#FF9800"
+                    android:layout_height="30dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Cancel Ride"
+                    android:textColor="#FF9800"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
