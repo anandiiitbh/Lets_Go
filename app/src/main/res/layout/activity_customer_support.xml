@@ -7,14 +7,28 @@
     tools:context=".CustomerSupport">
 
     <Button
+        android:id="@+id/liveChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="161dp"
+        android:text="Live Chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/askForCallback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="161dp"
         android:text="ask for callback"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="177dp"
         android:text="OR"
         android:textColor="#000000"
@@ -33,12 +47,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/askForCallback" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="177dp"
+        android:text="OR"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/askForCallback" />
+
     <EditText
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="306dp"
         android:layout_height="244dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="152dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#FDFCFC"
         android:ems="10"
@@ -46,6 +76,7 @@
         android:hint="Write your query....."
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -54,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="159dp"
         android:text="Submit Query"
         app:layout_constraintEnd_toEndOf="parent"

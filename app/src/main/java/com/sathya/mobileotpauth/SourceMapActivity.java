@@ -71,6 +71,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import im.crisp.client.Crisp;
+
 public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCallback, SearchableAdapter.UpdateAfterClick {
 
 
@@ -126,6 +128,8 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
         Checkout checkout = new Checkout();
         checkout.setKeyID("rzp_test_lRJDdEOLIeHgri");
         Checkout.preload(getApplicationContext());
+
+        Crisp.configure(getApplicationContext(), "d5e9ef30-0df8-48de-83f1-d16d100c7fa6");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.ghost_view);
         mapFragment.getMapAsync(this);
@@ -273,7 +277,8 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onResume() {
         super.onResume();
-
+        gotoMyCurrentLocation();
+        recentRideEnable();
         if(isOpen)
             new Handler().postDelayed(new Runnable() {
 
@@ -496,13 +501,7 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
 
     public void gotoMyCurrentLocation(){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+            enableMyLocation();
             return;
         }
         fusedLocationClient.getLastLocation()
@@ -756,6 +755,7 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gotoMyCurrentLocation();
                 locationButton.callOnClick();
 //                Location location = mMap.getMyLocation();
 //                if(location != null) { // Check to ensure coordinates aren't null, probably a better way of doing this...

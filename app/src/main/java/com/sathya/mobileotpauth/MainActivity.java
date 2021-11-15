@@ -27,6 +27,8 @@ import com.sathya.mobileotpauth.helper.NotificationBuildHelper;
 
 import java.util.concurrent.TimeUnit;
 
+import im.crisp.client.Crisp;
+
 public class MainActivity extends AppCompatActivity implements KeyboardFragment.ConnectorForCallback {
 
     KeyboardFragment keyboard = null;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements KeyboardFragment.
         setContentView(R.layout.activity_main);
         NotificationBuildHelper.createNotificationChannel(getApplicationContext());
 
+        Crisp.configure(getApplicationContext(), "d5e9ef30-0df8-48de-83f1-d16d100c7fa6");
         hideSystemUI();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
