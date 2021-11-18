@@ -64,9 +64,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:horizontalSpacing="6dp"
-        android:padding="10dp"
         android:numColumns="2"
+        android:paddingTop="30dp"
         android:verticalSpacing="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distance" />

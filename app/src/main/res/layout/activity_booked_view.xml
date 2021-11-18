@@ -232,7 +232,7 @@
         android:layout_height="45dp"
         android:layout_margin="20dp"
         android:layout_gravity="center"
-        app:cardBackgroundColor="#FBC72C"
+        app:cardBackgroundColor="#E91E63"
         app:cardCornerRadius="5dp"
         app:contentPadding="2dp"
         android:onClick="gotoPastBookings"
@@ -259,7 +259,7 @@
                     android:layout_width="2dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="7dp"
-                    android:background="#FBC72C"
+                    android:background="#E91E63"
                     android:layout_height="30dp"/>
 
                 <TextView
@@ -268,7 +268,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="All Bookings"
-                    android:textColor="#FBC72C"
+                    android:textColor="#E91E63"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
