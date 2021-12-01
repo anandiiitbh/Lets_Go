@@ -54,7 +54,19 @@ public class MainActivity extends AppCompatActivity implements KeyboardFragment.
 
             @Override
             public void run() {
-                checkForLogin();
+
+                sharedpreferences = getSharedPreferences(Constants.MyPREFERENCES, Context.MODE_PRIVATE);
+                if(checkForLogin(sharedpreferences)){
+                    Toast.makeText(MainActivity.this, "You have Logged in as :  "
+                            +sharedpreferences.getString(Constants.MOBILE,""), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, SourceMapActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    window.setStatusBarColor(getBaseContext().getResources().getColor(R.color.gray));
+                    findViewById(R.id.splash).setVisibility(View.GONE);
+                }
             }
         }, 3000);
 
@@ -78,19 +90,12 @@ public class MainActivity extends AppCompatActivity implements KeyboardFragment.
                 .commit();
     }
 
-    private void checkForLogin() {
-        sharedpreferences = getSharedPreferences(Constants.MyPREFERENCES, Context.MODE_PRIVATE);
+    public boolean checkForLogin(SharedPreferences sharedpreferences) {
         if(sharedpreferences.contains(Constants.IS_LOGIN) && sharedpreferences.getBoolean(Constants.IS_LOGIN,false)) {
-
-            Toast.makeText(MainActivity.this, "You have Logged in as :  "
-                    +sharedpreferences.getString(Constants.MOBILE,""), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, SourceMapActivity.class);
-            startActivity(intent);
-            finish();
+            return true;
         }
         else{
-            window.setStatusBarColor(getBaseContext().getResources().getColor(R.color.gray));
-            findViewById(R.id.splash).setVisibility(View.GONE);
+            return false;
         }
     }
 

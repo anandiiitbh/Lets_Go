@@ -1,6 +1,7 @@
 package com.sathya.mobileotpauth;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,16 +15,23 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sathya.mobileotpauth.dbConnectivity.PastRidesDbHelper;
 import com.sathya.mobileotpauth.dbConnectivity.RidesSchema;
 import com.sathya.mobileotpauth.helper.Constants;
 import com.sathya.mobileotpauth.helper.NotificationBuildHelper;
 import com.sathya.mobileotpauth.helper.models.RideModel;
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
+import com.spotify.protocol.types.Track;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,6 +46,17 @@ public class BookedView extends AppCompatActivity {
     String cabNumber;
     String driverDetails = null;
     SharedPreferences sharedpreferences;
+    private static final String CLIENT_ID = "4aeea5d5556743f3a6219c7f9971f63a";
+    private static final String REDIRECT_URI = "lets-go-app-login://callback";
+    private SpotifyAppRemote mSpotifyAppRemote;
+
+    CardView musicContainer = null;
+    CardView musicContainerClosed = null;
+    Animation musicButtonOpen = null;
+    Animation musicButtonClose = null;
+    ImageView playPauseButton = null;
+    TextView musicText = null;
+    boolean playPaused = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +64,6 @@ public class BookedView extends AppCompatActivity {
         setContentView(R.layout.activity_booked_view);
 
         getSupportActionBar().hide();
-
 
         sharedpreferences = getSharedPreferences(Constants.Wallet, Context.MODE_PRIVATE);
         from  = getIntent().getStringExtra(RideModel.FROM);
@@ -95,6 +113,122 @@ public class BookedView extends AppCompatActivity {
         ((TextView) findViewById(R.id.src)).setText(from);
         ((TextView) findViewById(R.id.dest)).setText(to);
 
+
+
+//        menuButton Menu buttons
+        musicContainer = (CardView) findViewById(R.id.musicContainer);
+        musicContainerClosed = (CardView) findViewById(R.id.musicContainerClosed);
+        playPauseButton = findViewById(R.id.playPause);
+        musicText = findViewById(R.id.musicText);
+
+        musicButtonOpen = AnimationUtils.loadAnimation
+                (this, R.anim.music_player_open);
+        musicButtonClose = AnimationUtils.loadAnimation
+                (this, R.anim.music_player_close);
+
+        musicContainerClosed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateMenuButton(false);
+            }
+        });
+        findViewById(R.id.musicCloser).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                animateMenuButton(true);
+            }
+        });
+        findViewById(R.id.skipNext).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSpotifyAppRemote.getPlayerApi().skipNext();
+            }
+        });
+        findViewById(R.id.playPause).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(playPaused){
+                    mSpotifyAppRemote.getPlayerApi().pause();
+                    playPauseButton.setImageDrawable(getDrawable(R.drawable.ic_sharp_play_arrow_24));
+                    playPaused=false;
+                }
+                else{
+                    mSpotifyAppRemote.getPlayerApi().resume();
+                    playPauseButton.setImageDrawable(getDrawable(R.drawable.ic_baseline_pause_24));
+                    playPaused=true;
+                }
+            }
+        });
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ConnectionParams connectionParams =
+                new ConnectionParams.Builder(CLIENT_ID)
+                        .setRedirectUri(REDIRECT_URI)
+                        .showAuthView(true)
+                        .build();
+
+        SpotifyAppRemote.connect(this, connectionParams,
+                new Connector.ConnectionListener() {
+
+                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+                        mSpotifyAppRemote = spotifyAppRemote;
+                        Log.d("MainActivity", "Connected! Yay!");
+
+                        // Now you can start interacting with App Remote
+
+                    }
+
+                    public void onFailure(Throwable throwable) {
+                        Log.e("MyActivity", throwable.getMessage(), throwable);
+
+                        // Something went wrong when attempting to connect! Handle errors here
+                    }
+                });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
+    }
+
+    private void connected() {
+
+        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
+
+        mSpotifyAppRemote.getPlayerApi()
+                .subscribeToPlayerState()
+                .setEventCallback(playerState -> {
+                    final Track track = playerState.track;
+                    if (track != null) {
+                        musicText.setText(track.name+" : "+track.artist.name);
+                        Log.d("MainActivity", track.name + " by " + track.artist.name);
+                    }
+                });
+    }
+
+    private void animateMenuButton(boolean isOpen){
+        if (isOpen){
+            //SimleButtonState
+            musicContainer.startAnimation(musicButtonClose);
+            mSpotifyAppRemote.getPlayerApi().pause();
+            musicContainerClosed.setVisibility(View.VISIBLE);
+            playPaused=false;
+        }else {
+
+            //MusicState
+            musicContainer.setVisibility(View.VISIBLE);
+            musicContainer.startAnimation(musicButtonOpen);
+            musicContainerClosed.setVisibility(View.GONE);
+            playPauseButton.setImageDrawable(getDrawable(R.drawable.ic_baseline_pause_24));
+            connected();
+            playPaused=true;
+        }
     }
 
     public void shareWithFamily(View view) {

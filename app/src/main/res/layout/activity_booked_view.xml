@@ -325,6 +325,115 @@
         </androidx.cardview.widget.CardView>
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/musicContainerClosed"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="20dp"
+        android:elevation="12dp"
+        app:cardBackgroundColor="@color/splash"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancelRide">
 
+        <LinearLayout
+            android:id="@+id/DestInput"
+            android:layout_width="246dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/spotify"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/spotify" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/splash"
+                android:clickable="false"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:hint="@string/Enter_Dest"
+                android:lines="1"
+                android:text="Enjoy ride with music"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="29dp"
+                tools:layout_editor_absoluteY="100dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/musicContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="5dp"
+        android:visibility="gone"
+        android:elevation="12dp"
+        app:cardBackgroundColor="@color/splash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancelRide">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/playPause"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_pause_24" />
+            <ImageView
+                android:id="@+id/skipNext"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_skip_next_24" />
+
+            <TextView
+                android:id="@+id/musicText"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:background="@color/splash"
+                android:clickable="false"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="29dp"
+                tools:layout_editor_absoluteY="100dp" />
+
+
+            <ImageView
+                android:id="@+id/musicCloser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_close_24" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,7 +53,7 @@ public class AddMoneyToWallet extends AppCompatActivity implements PaymentResult
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence.length() == 0){
-                    moneyToAdd.setText(""+0);
+                    moneyToAdd.setText("100");
                 }
             }
 
