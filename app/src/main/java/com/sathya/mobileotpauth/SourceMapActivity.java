@@ -277,7 +277,11 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onResume() {
         super.onResume();
+
         gotoMyCurrentLocation();
+        if(locationButton != null){
+            locationButton.callOnClick();
+        }
         recentRideEnable();
         if(isOpen)
             new Handler().postDelayed(new Runnable() {
@@ -331,17 +335,8 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
         if(locationButton != null)
             locationButton.setVisibility(View.GONE);
 
-        boolean success = googleMap.setMapStyle(new MapStyleOptions(getResources()
+        mMap.setMapStyle(new MapStyleOptions(getResources()
                 .getString(R.string.mapTheme)));
-
-        Runnable refreshCurrentLocation = new Runnable() {
-            public void run() {
-                while (myLocation == null) ;
-                Message msg = handler.obtainMessage();
-                msg.what = LOCATION_UPDATED;
-                handler.sendMessage(msg);
-            }
-        };
 
 
         mMap.setOnCameraMoveListener((GoogleMap.OnCameraMoveListener) () -> {
@@ -756,7 +751,9 @@ public class SourceMapActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onClick(View v) {
                 gotoMyCurrentLocation();
-                locationButton.callOnClick();
+                if(locationButton != null){
+                    locationButton.callOnClick();
+                }
 //                Location location = mMap.getMyLocation();
 //                if(location != null) { // Check to ensure coordinates aren't null, probably a better way of doing this...
 //                    goToLocationZoom(location.getLatitude(),location.getLongitude(),17);

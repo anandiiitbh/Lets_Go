@@ -254,10 +254,6 @@ public class DestMapActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 locationButton.callOnClick();
-//                Location location = mMap.getMyLocation();
-//                if(location != null) { // Check to ensure coordinates aren't null, probably a better way of doing this...
-//                    goToLocationZoom(location.getLatitude(),location.getLongitude(),17);
-//                }
             }
         });
     }

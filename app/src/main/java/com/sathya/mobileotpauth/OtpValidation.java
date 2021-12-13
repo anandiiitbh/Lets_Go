@@ -25,6 +25,8 @@ import com.sathya.mobileotpauth.helper.Constants;
 import com.sathya.mobileotpauth.helper.KeyboardFragment;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OtpValidation extends AppCompatActivity implements KeyboardFragment.ConnectorForCallback, View.OnClickListener{
     String verificationId = null;
@@ -76,12 +78,6 @@ public class OtpValidation extends AppCompatActivity implements KeyboardFragment
 
     }
 
-    // TODO Knock this method..
-//    void sentOtp(String number){
-//        otp = String.format("%06d", new Random().nextInt(999999));
-//        Toast.makeText(this, "OTP : "+otp, Toast.LENGTH_SHORT).show();
-//    }
-
     void insertNumber(String key) {
         int length = userOtp.length();
         if(key.equals("-1") && length <=6 && length >=1){
@@ -127,6 +123,13 @@ public class OtpValidation extends AppCompatActivity implements KeyboardFragment
 
     }
 
+    public static boolean isValid(String s)
+    {
+        Pattern p = Pattern.compile("^\\d{10}$");
+        Matcher m = p.matcher(s);
+        return (m.matches());
+    }
+
     @Override
     public void update(int key) {
 
@@ -134,6 +137,21 @@ public class OtpValidation extends AppCompatActivity implements KeyboardFragment
             insertNumber(new Integer(key).toString());
         }
         if(key==10){
+//            sharedpreferences = getSharedPreferences(Constants.MyPREFERENCES, Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = sharedpreferences.edit();  // GE_HEALTH
+//            editor.putString(Constants.MOBILE, phoneNumber);
+//            editor.putBoolean(Constants.IS_LOGIN, true);
+//            editor.commit();
+//
+//            //Initial Wallet amount
+//            SharedPreferences sharedpreferencess = getSharedPreferences(Constants.Wallet, Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editorr = sharedpreferencess.edit();  // GE_HEALTH
+//            editorr.putInt(Constants.Wallet_Money, 100);
+//            editorr.commit();
+//            Intent intent = new Intent(getBaseContext(), SourceMapActivity.class);
+//            intent.putExtra("STATUS", "VERIFICATION SUCCESS");
+//            startActivity(intent);
+//            finish();
             PhoneAuthCredentialMethod(verificationId, userOtp);
         }
 

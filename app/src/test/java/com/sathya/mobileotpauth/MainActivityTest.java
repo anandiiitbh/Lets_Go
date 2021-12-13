@@ -1,6 +1,6 @@
 package com.sathya.mobileotpauth;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -8,31 +8,40 @@ import android.content.SharedPreferences;
 
 import com.sathya.mobileotpauth.helper.Constants;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito.*;
 
-class MainActivityTest {
+public class MainActivityTest {
+
 
     SharedPreferences sharedPreferences;
-    MainActivity activity;
-    @BeforeAll
-    void initMocks(){
+
+    @Before
+    public void initMocks(){
         sharedPreferences = mock(SharedPreferences.class);
-        activity = new MainActivity();
     }
 
     @Test
-    void checkLoginReturnTrueTest(){
+    public void checkLoginReturnTrueTest(){
+
+        //Mocking SharedPreferences as if credentials are stored.
         when(sharedPreferences.contains(Constants.IS_LOGIN)).thenReturn(true);
         when(sharedPreferences.getBoolean(Constants.IS_LOGIN,false)).thenReturn(true);
-        assertTrue(activity.checkForLogin(sharedPreferences),">>>> User Logged In !!!");
+
+
+        //                                                         checkForLogin --return-->  true
+        assertTrue(">>>> User Logged In !!!", MainActivity.checkForLogin(sharedPreferences));
     }
 
     @Test
-    void checkLoginReturnFalseTest(){
+    public void checkLoginReturnFalseTest(){
+
+        //Mocking SharedPreferences as no credentials are stored.
         when(sharedPreferences.contains(Constants.IS_LOGIN)).thenReturn(false);
         when(sharedPreferences.getBoolean(Constants.IS_LOGIN,false)).thenReturn(false);
-        assertFalse(activity.checkForLogin(sharedPreferences),">>>> User Logged In !!!");
+
+        //                                                             checkForLogin --return-->  false
+        assertFalse(">>>> User Not Logged In Previously!!!", MainActivity.checkForLogin(sharedPreferences));
     }
 }

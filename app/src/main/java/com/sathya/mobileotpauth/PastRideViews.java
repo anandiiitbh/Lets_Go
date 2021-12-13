@@ -88,9 +88,6 @@ public class PastRideViews extends AppCompatActivity implements KeyboardFragment
 
            getSupportActionBar().setSubtitle("Click on any ride to go for it again ");
            PastRideListAdapter adapter = new PastRideListAdapter(this,this, rideModelArrayList);
-//           SectionedRecyclerViewAdapter sectionAdapter = new SectionedRecyclerViewAdapter();
-//           sectionAdapter.addSection(adapter);
-//           sectionAdapter.addSection(adapter);
            layout.setAdapter(adapter);
        }
        catch (Exception e){

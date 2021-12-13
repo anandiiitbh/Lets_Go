@@ -96,6 +96,7 @@
         android:layout_height="match_parent">
 
         <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/splashImageView"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:background="#2a2e3a"

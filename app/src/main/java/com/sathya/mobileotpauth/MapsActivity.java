@@ -130,18 +130,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ((TextView) findViewById(R.id.to)).setText(to);
         ((TextView) findViewById(R.id.distance)).setText("Estimated Distance: " + String.format("%.02f", distance) + " Kms");
 
-        Integer primeSedan = 55 + (7*(int)distance);
-        Integer sedan      = 40 + (6*(int)distance);
-        Integer auto       = 50 + (6*(int)distance);
-        Integer bike       = 19 + (3 * (int)distance);
+        Integer primeSedan = fareCalculater((int) distance,55,7,13);
+        Integer sedan      = fareCalculater((int) distance,40,6,12);
+        Integer auto       = fareCalculater((int) distance,50,6,12);
+        Integer bike       = fareCalculater((int) distance,19,3,3);
 
-        if(distance > 20){
-            // Base fare + travel chargers before 20 km + travel chargers after 20 km
-            primeSedan = 55 + (7*20) + (((int)distance - 20) * 13);
-            sedan      = 40 + (6*20) + (((int)distance - 20) * 12);
-            auto       = 50 + (6*20) + (((int)distance - 20) * 12);
-            bike       = 19 + (3 * (int)distance);
-        }
         //Booking Options
         coursesGV = findViewById(R.id.idGVcourses);
 
@@ -199,6 +192,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ((TextView) findViewById(R.id.msg)).setText(errorMsg);
 
     }
+
+
+    public static Integer fareCalculater(Integer distance, Integer baseFare, Integer travelChargersBefore20, Integer travelChargersAfter20){
+        Integer fare = baseFare + (travelChargersBefore20 * (int)distance);
+
+        if(distance > 20) {
+            // Base fare + travel chargers before 20 km + travel chargers after 20 km
+            fare = baseFare + (travelChargersBefore20 * 20) + (((int) distance - 20) * travelChargersAfter20);
+        }
+        return fare;
+    }
+
+
 
     @Override
     protected void onResume() {
