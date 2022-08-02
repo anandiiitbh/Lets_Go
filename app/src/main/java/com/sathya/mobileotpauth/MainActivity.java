@@ -205,67 +205,68 @@ public class MainActivity extends AppCompatActivity implements KeyboardFragment.
             insertNumber(new Integer(key).toString());
         if(key == 10 && phoneNumber.length()>12){
 
-            // TODO Bring in generate OTP  module here..
-            // under onCode Sent method bring the following line
-
-
             GenerateOTP();
+        }
+        if(key == 10 && phoneNumber.length()<=12){
+
+
+            Toast.makeText(MainActivity.this, "Enter Correct Number", Toast.LENGTH_SHORT).show();
+
         }
     }
 
     private void GenerateOTP() {
 
 
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber(phoneNumber)       // Phone number to verify
-                        .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
-                        .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
+//        PhoneAuthOptions options =
+//                PhoneAuthOptions.newBuilder(mAuth)
+//                        .setPhoneNumber(phoneNumber)       // Phone number to verify
+//                        .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
+//                        .setActivity(this)                 // Activity (for callback binding)
+//                        .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
+//                        .build();
+//        PhoneAuthProvider.verifyPhoneNumber(options);
 
 
 
-        // TODO Bring in generate OTP  module here..
         // under onCode Sent method bring the following line
-//        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                phoneNumber,
-//                120,
-//                TimeUnit.SECONDS,
-//                MainActivity.this,
-//                new PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-//
-//                    @Override
-//                    public void onVerificationCompleted(@NonNull  PhoneAuthCredential phoneAuthCredential) {
-//                        Toast.makeText(MainActivity.this, "Verification Completed..", Toast.LENGTH_SHORT).show();
-//                         Log.d("tag","Verification Completed..");
-//                    }
-//
-//                    @Override
-//                    public void onVerificationFailed(@NonNull  FirebaseException e) {
-//                        Toast.makeText(MainActivity.this, "Verification FAILED..", Toast.LENGTH_SHORT).show();
-//                        Log.d("tag","Verification FAILED..");
-//                    }
-//
-//                    @Override
-//                    public void onCodeSent(@NonNull  String verificationID, @NonNull  PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-//                        super.onCodeSent(verificationID, forceResendingToken);
-//                         Log.d("tag"," VerificationID "+verificationID);
-//                        Toast.makeText(MainActivity.this, "OTP Sent..", Toast.LENGTH_SHORT).show();
-//
-//                        Intent intent =  new Intent(getBaseContext(), OtpValidation.class);
-//                        // intent.putExtra("CELL",phoneNumber);
-//                        intent.putExtra("verificationID",verificationID);  // s pick this from  onCodeSent(@NonNull String verificationID,
-//
-//                        intent.putExtra("phoneNumber",phoneNumber);
-//                        //  intent.putExtra("MainActivityContext", (Parcelable) this); // or pass this via interface so  GenerateOTP()  can be called
-//                        startActivity(intent);
-//                    }
-//                }
-//
-//
-//        );
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                phoneNumber,
+                120,
+                TimeUnit.SECONDS,
+                MainActivity.this,
+                new PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+
+                    @Override
+                    public void onVerificationCompleted(@NonNull  PhoneAuthCredential phoneAuthCredential) {
+                        Toast.makeText(MainActivity.this, "Verification Completed..", Toast.LENGTH_SHORT).show();
+                         Log.d("tag","Verification Completed..");
+                    }
+
+                    @Override
+                    public void onVerificationFailed(@NonNull  FirebaseException e) {
+                        Toast.makeText(MainActivity.this, "Verification FAILED..", Toast.LENGTH_SHORT).show();
+                        Log.d("tag","Verification FAILED..");
+                    }
+
+                    @Override
+                    public void onCodeSent(@NonNull  String verificationID, @NonNull  PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                        super.onCodeSent(verificationID, forceResendingToken);
+                         Log.d("tag"," VerificationID "+verificationID);
+                        Toast.makeText(MainActivity.this, "OTP Sent..", Toast.LENGTH_SHORT).show();
+
+                        Intent intent =  new Intent(getBaseContext(), OtpValidation.class);
+                        // intent.putExtra("CELL",phoneNumber);
+                        intent.putExtra("verificationID",verificationID);  // s pick this from  onCodeSent(@NonNull String verificationID,
+
+                        intent.putExtra("phoneNumber",phoneNumber);
+                        //  intent.putExtra("MainActivityContext", (Parcelable) this); // or pass this via interface so  GenerateOTP()  can be called
+                        startActivity(intent);
+                    }
+                }
+
+
+        );
 
 
 
